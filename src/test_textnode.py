@@ -54,6 +54,13 @@ class TestTextNodeToHTMLNode(unittest.TestCase):
         self.assertEqual(html_node.tag, "b")
         self.assertEqual(html_node.value, "This is bold")
 
+    def test_link():
+        node = TextNode("Boot.dev", TextType.LINK, "https://boot.dev")
+        html_node = text_node_to_html_node(node)
+        assert html_node.tag == "a"
+        assert html_node.value == "Boot.dev"
+        assert html_node.props == {"href": "https://boot.dev"}
+
 
 if __name__ == "__main__":
     unittest.main()
