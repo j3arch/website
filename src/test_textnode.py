@@ -54,7 +54,7 @@ class TestTextNodeToHTMLNode(unittest.TestCase):
         self.assertEqual(html_node.tag, "b")
         self.assertEqual(html_node.value, "This is bold")
 
-    def test_link():
+    def test_link(self):
         node = TextNode("Boot.dev", TextType.LINK, "https://boot.dev")
         html_node = text_node_to_html_node(node)
         assert html_node.tag == "a"
