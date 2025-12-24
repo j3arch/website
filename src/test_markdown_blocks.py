@@ -61,11 +61,6 @@ This is the same paragraph on a new line
         block = "paragraph"
         self.assertEqual(block_to_block_type(block), BlockType.PARAGRAPH)
 
-    def test_paragraphs(self):
-        pass
-
-    def test_codeblock(self):
-        pass
 
 if __name__ == "__main__":
     unittest.main()
