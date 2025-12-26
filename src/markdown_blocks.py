@@ -60,20 +60,7 @@ def markdown_to_html_node(markdown):
     return ParentNode("div", children, None)
 
 def block_to_html_node(block):
-    block_type = block_to_block_type(block)
-    if block_type == BlockType.PARAGRAPH:
-        return paragraph_to_html_node(block)
-    if block_type == BlockType.HEADING:
-        return heading_to_html_node(block)
-    if block_type == BlockType.CODE:
-        return code_to_html_node(block)
-    if block_type == BlockType.OLIST:
-        return olist_to_html_node(block)
-    if block_type == BlockType.ULIST:
-        return ulist_to_html_node(block)
-    if block_type == BlockType.QUOTE:
-        return quote_to_html_node(block)
-    raise ValueError("invalid block type")
+    pass
 
 def text_to_children(text):
     text_nodes = text_to_textnodes(text)
@@ -119,23 +106,3 @@ def olist_to_html_node(block):
         children = text_to_children(text)
         html_items.append(ParentNode("li", children))
     return ParentNode("ol", html_items)
-
-def ulist_to_html_node(block):
-    items = block.split("\n")
-    html_items = []
-    for item in items:
-        text = item[2:]
-        children = text_to_children(text)
-        html_items.append(ParentNode("li", children))
-    return ParentNode("ul", html_items)
-
-def quote_to_html_node(block):
-    lines = block.split("\n")
-    new_lines = []
-    for line in lines:
-        if not line.startswith(">"):
-            raise ValueError("invalid quote block")
-        new_lines.append(line.lstrip(">").strip())
-    content = " ".join(new_lines)
-    children = text_to_children(content)
-    return ParentNode("blockquote", children)
