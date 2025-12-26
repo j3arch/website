@@ -119,3 +119,12 @@ def olist_to_html_node(block):
         children = text_to_children(text)
         html_items.append(ParentNode("li", children))
     return ParentNode("ol", html_items)
+
+def ulist_to_html_node(block):
+    items = block.split("\n")
+    html_items = []
+    for item in items:
+        text = item[2:]
+        children = text_to_children(text)
+        html_items.append(ParentNode("li", children))
+    return ParentNode("ul", html_items)
