@@ -1,1 +1,1 @@
-python3 src/main.py "https://github.com/j3arch/website"
+python3 src/main.py "/website/"
